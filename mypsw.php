@@ -36,9 +36,9 @@ session_start();
 				}else
 				{
 					?>
-                        <dd>欢迎您，<?=$_SESSION["uname"]?>
+                        <dd>欢迎您，<a href="myaccount.php"><?=$_SESSION["uname"]?></a>
                         <dt></dt>
-                        <dd><a href="#">我的打印</a></dd>
+                        <dd><a href="newprint.php">去打印</a></dd>
 						<dt></dt>
 						<a href="logout.php">登出</a></dd>
 					<?php
@@ -61,8 +61,8 @@ session_start();
                             </li>
                         	<li class="order"><h3>我的帐号</h3>
                             	<ul>
+                                	<li><a href="myaccount.php">帐号信息</a></li>
                                 	<li><a id="active" href="javascript:;">修改密码</a></li>
-                                	<li><a href="myaddress.php">管理收件地址</a></li>
                                 </ul>	
                             </li>
                         </ul>
@@ -70,7 +70,7 @@ session_start();
                         <div class="docuLeft">
                         	<div class="docuTop">
 								<div class="reg">
-									<form action="" method="post">
+									<form class="psw" action="" method="post">
 										<dl class="clearfix">
 											<dd>当前密码：</dd>
 											<dt><input type="password" name="opsw" id="psw"></dt>

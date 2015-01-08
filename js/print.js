@@ -32,13 +32,15 @@ function getByClass(oParent, sClass)
 
 var odocu=document.getElementById('document');
 
+var oGoprint=document.getElementById('goprint');
+
+var oShop=document.getElementById('shop_id');
+
+var oFile=document.getElementById('file');
+
 var aTr=odocu.getElementsByTagName('tr');
 
-var aSd=getByClass(odocu,'sd');  //单双页
-
-var aBc=getByClass(odocu,'bc');  //黑白彩色
-
-var aPer=[];                     //每张纸价格
+/*var aPer=[];                     //每张纸价格*/
 
 var aSub=getByClass(odocu,'sub');  //-
 
@@ -66,17 +68,29 @@ var sinPrice=0;  //一份价格
 
 
 
-//初始价格
+/*//初始价格
+function price(){
+	aPer[0]=(aBc[0].value=='black')?0.1:1;  //黑白1角，彩色1元
 
-		aPer[0]=(aBc[0].value=='black')?0.1:1;  //黑白1角，彩色1元
+	sinPrice=aPer[0]*aSd[0].value*aPages[0].innerHTML;
 
-		sinPrice=aPer[0]*aSd[0].value*aPages[0].innerHTML;
-
-		aPrice[0].innerHTML=Math.round(aNum[0].innerHTML*sinPrice*100)/100;
+	aPrice[0].innerHTML=Math.round(aNum[0].innerHTML*sinPrice*100)/100;
+}*/
+	
+//未选商家提示
+oGoprint.onclick=function(){
+	if(oFile.value==""){
+		alert("亲还未选择打印文件");
+		return false;
+	}
+	if(oShop.value==-1){
+		alert("亲，请选择打印商家");
+		return false;
+	}
+}
 		
-		
 
-//加份数
+//+
 
 for( var i=0;i<len;i++){
 
@@ -85,14 +99,6 @@ for( var i=0;i<len;i++){
 	aAdd[i].onclick=function(){
 
 		aNum[this.index].innerHTML++;
-
-		//计算价格
-
-		aPer[this.index]=(aBc[this.index].value=='black')?0.1:1;  //黑白1角，彩色1元
-
-		sinPrice=aPer[this.index]*aSd[this.index].value*aPages[this.index].innerHTML;
-
-		aPrice[this.index].innerHTML=Math.round(aNum[this.index].innerHTML*sinPrice*100)/100;
 
 	}
 
@@ -111,12 +117,6 @@ for( var i=0;i<len;i++){
 		aNum[this.index].innerHTML--;
 
 		if(aNum[this.index].innerHTML<1){aNum[this.index].innerHTML=1}
-
-		aPer[this.index]=(aBc[this.index].value=='black')?0.1:1;  //黑白1角，彩色1元角
-
-    	sinPrice=aPer[this.index]*aSd[this.index].value*aPages[this.index].innerHTML;
-
-		aPrice[this.index].innerHTML=Math.round(aNum[this.index].innerHTML*sinPrice*100)/100;
 
 		}
 
@@ -152,7 +152,7 @@ for( var i=0;i<len;i++){
 
 
 
-//单双页更改
+/*//单双页更改
 
 for( var i=0;i<len;i++){
 
@@ -162,19 +162,15 @@ for( var i=0;i<len;i++){
 
 		//计算价格
 
-		aPer[this.index]=(aBc[this.index].value=='black')?0.1:1;  //黑白1角，彩色1元
-
-		sinPrice=aPer[this.index]*aSd[this.index].value*aPages[this.index].innerHTML;
-
-		aPrice[this.index].innerHTML=Math.round(aNum[this.index].innerHTML*sinPrice*100)/100;
+		price();
 
 	}
 
-}
+}*/
 
 
 
-//黑彩更改
+/*//黑彩更改
 
 for( var i=0;i<len;i++){
 
@@ -184,18 +180,14 @@ for( var i=0;i<len;i++){
 
 		//计算价格
 
-		aPer[this.index]=(aBc[this.index].value=='black')?0.1:1;  //黑白1角，彩色1元
-
-		sinPrice=aPer[this.index]*aSd[this.index].value*aPages[this.index].innerHTML;
-
-		aPrice[this.index].innerHTML=Math.round(aNum[this.index].innerHTML*sinPrice*100)/100;
+		price();
 
 	}
 
-}
+}*/
 
 
-//close
+/*//close
 
 for( var i=0;i<len;i++){
 
@@ -213,4 +205,4 @@ for( var i=0;i<len;i++){
 
 		else {aTr[this.index+1].style.display='none';}}
 
-}
+}*/

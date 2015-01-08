@@ -1,44 +1,3 @@
-/* reset */
-body,h1,h2,h3,h4,h5,h6,p,dl,dd,ul,ol,pre,form,input,textarea,th,td,select{margin:0;padding:0;}
-em{font-style:normal}
-li{list-style:none}
-a{text-decoration:none;}
-a:hover{text-decoration: underline;}
-img{border:none; vertical-align:top;}
-table{border-collapse:collapse;}
-textarea{ resize:none;overflow:auto;}
-/* end reset */
-
-body{
-	font: 12px/1.14 '微软雅黑',arial,'宋体';
-	color: #444;
-	background-color:#fff;}
-a:link,a:visited{
-	color: #444;
-	text-decoration:none;}
-a:hover{
-	color:#222;
-	text-decoration:underline;}
-	
-/* header */
-.header{
-	height: 68px;
-	background: url("../images/bg_01.png") repeat-x;
-	padding-bottom: 10px;
-	margin-bottom: -10px;
-	position: relative;
-	z-index: 20;}
-.head{
-	width: 960px;
-	margin: 0 auto;
-	position: relative;}
-.logo {
-	display: block;
-	width: 220px;
-	height: 68px;
-	background: url("../images/logo.png") no-repeat;
-	}
-
 /* 打印页面 */
 .main1 {
 	width: 960px;
@@ -101,31 +60,37 @@ a:hover{
 	margin-top:5px;
 	margin-left:10px;
 	font-size: 18px;}
-#afile,#aupload{
-	background: url('../images/file.png') no-repeat;
+#afile{
 	width: 120px;
 	height: 35px;
 	display: block;
 	float: left;
 	padding: 0px;
-	margin: 0px;}
-#aupload{
-	background: url('../images/upload.png') no-repeat;
-	margin-left:30px;}
-a.goprint{
+	margin-bottom: 10px;}
+#file{
+	display: block;
+	position: relative;
+	left: 52px;
+	top: -28px;
+	width: 600px;}
+#newfile{
+	position:relative;
+	z-index:99;}
+#goprint{
 	float:right;
-	display:block;
+	margin:10px 10px 0 0;
+	width: 120px;
+	height: 35px;
 	background:#00B7EE;
-	width:80px;
-	padding:10px 20px;
 	color:#fff;
 	text-align:center;
 	border-radius:3px;
 	font-size:14px;
 	font-weight:bold;
 	text-decoration:none;
-	margin: 20px;}
-a.goprint:hover{
+	border:none;
+	cursor:pointer;}
+#goprint:hover{
 	background:#3BB3DB;}
 	
 #active{
@@ -135,17 +100,17 @@ a.goprint:hover{
 	width: 815px;
 	text-align:center;}
 .document tr{
-	height:28px;
+	height:36px;
 	font-size:12px;}
 tr.docuhead{
-	height:38px;
+	height:46px;
 	font-size:14px;
-	color:#000;}
+	color:#000;
+	background: #eee;}
 .even{
 	background:#eee;}
 .document th,.document td{
-	border: 1px solid #ddd;}
-	
+	border: 1px solid #ddd;}	
 .document button{
 	height: 24px;
 	width: 26px;
@@ -153,7 +118,10 @@ tr.docuhead{
 	line-height: 6px;
 	cursor:pointer;}	
 .document select{
-	background: #F5F5F5;}
+	background: #F5F5F5;
+	height:25px;}	
+.document input{
+	height:25px;}
 a.change{ color:#3898F8;}
 input.address{
 	width: 130px;
@@ -162,20 +130,22 @@ input.address{
 	background: transparent;}
 
 /*管理密码*/
+.psw{ margin-top:10px;}
 #psubmit{
 	width: 62px;
-	border: 1px solid #5399a8;
+	--border: 1px solid #5399a8;
 	color: #ffffff;
-	background-color: #5ab6ca;
+	background-color: #00B7EE;
 	height: 28px;
 	cursor: pointer;
-	border-radius: 2px;
+	border-radius: 3px;
+	border:none;
 	margin-left: 80px;
 	text-align: center;
 	padding: 0;
 	font-size: 14px;}
 #psubmit:hover{
-	background-color: #5aa1ca;}
+	background-color: #3BB3DB;}
 
 /* footer */
 .footer{

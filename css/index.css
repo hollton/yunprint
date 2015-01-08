@@ -11,14 +11,14 @@ textarea{ resize:none;overflow:auto;}
 
 body{
 	font: 12px/1.14 '微软雅黑',arial,'宋体';
-	color: #444;
+	color: #222;
 	min-width: 960px;
 	background-color:#fff;}
 a:link,a:visited{
-	color: #444;
+	color: #222;
 	text-decoration:none;}
 a:hover{
-	color:#222;
+	color:#000;
 	text-decoration:underline;}
 	
 /* header */

@@ -37,12 +37,17 @@ if(isset($_GET['fid']))
 		if($data[0]["pages"]<=0)
 		{
 			?>
-			<form action="upload_file.php" method="post">
+			<form action="upload_pages.php?fid=<?=$_GET['fid']?>" method="post">
 			请输入实际页数，支付价格依据实际页数确定，若输入有误，可能会耽误您打印：
 			<br />
 			<input type="text" name="pages" ></input>
 			<input type="submit" name="submit" value="Submit" />
 			</form>
+			<?php
+		}else
+		{
+			?>
+			直接跳转
 			<?php
 		}
 	}

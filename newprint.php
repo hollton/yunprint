@@ -36,9 +36,9 @@ session_start();
 				}else
 				{
 					?>
-                        <dd>欢迎您，<?=$_SESSION["uname"]?>
+                        <dd>欢迎您，<a href="myaccount.php"><?=$_SESSION["uname"]?></a>
                         <dt></dt>
-                        <dd><a href="#">我的打印</a></dd>
+                        <dd><a href="newprint.php">去打印</a></dd>
 						<dt></dt>
 						<a href="logout.php">登出</a></dd>
 					<?php
@@ -61,8 +61,8 @@ session_start();
                             </li>
                         	<li class="order"><h3>我的帐号</h3>
                             	<ul>
+                                	<li><a href="myaccount.php">帐号信息</a></li>
                                 	<li><a href="mypsw.php">修改密码</a></li>
-                                	<li><a href="myaddress.php">管理收件地址</a></li>
                                 </ul>	
                             </li>
                         </ul>
@@ -72,86 +72,63 @@ session_start();
                                 <form action="upload_file.php" method="post" enctype="multipart/form-data">
 								
 								    <a href="javascript:file.click();" id="afile">
-                                        <input type="file" name="file" id="file" accept=".doc,.docx,.ppt,.pptx,.xls,.xlsx,.pdf" style="display:none"/>
+                                        <img id="newfile" src="images/file.png" />
+										<input type="file" name="file" id="file" accept=".doc,.docx,.ppt,.pptx,.xls,.xlsx,.pdf" />
                                     </a>
-                                    
-                                    <a href="javascript:fsubmit.click();" id="aupload">
-                                        <input type="submit" name="submit" id="fsubmit" value="上传" style="display:none"/>
-                                    </a>
-								<!--
-								
-<label for="file">Filename(*.doc,*.ppt,*.xls,*.pdf,*.txt,<1M):</label>
-<br />
-<input type="file" name="file" id="file" /> 
-<br />-->
-<select id="print_type" name="print_type">
-	<option value="-1">请选择...</option>
-	<?php
-	$mysql = new SaeMysql();
-	$sql = "SELECT * FROM `db_print_type`";
-	$data = $mysql->getData( $sql );
-	$i=0;
-	for($i=0;$i<count($data);$i++)
-	{
-		echo ("<option value=\"{$data[$i]['id']}\">{$data[$i]['name']}</option>");
-	}
-	?>
-</select>
-<br />
-<select id="shop_id" name="shop_id">
-	<option value="-1">请选择...</option>
-	<?php
-	$sql = "SELECT * FROM `db_shop`";
-	$data = $mysql->getData( $sql );
-	$i=0;
-	for($i=0;$i<count($data);$i++)
-	{
-		echo ("<option value=\"{$data[$i]['id']}\">{$data[$i]['name']}</option>");
-	}
-	?>
-</select>
-<br />
-份数：<input type="text" name="times" value="1">数字</input>
-<br />
-备注：<input type="text" name="note" >30中文字</input>
-<br/>
-<select id="is_color" name="is_color">
-	<option value="-1">请选择...</option>
-	<option value="0">黑白</option>
-	<option value="1">彩色</option>
-</select>
-<input type="submit" name="submit" value="Submit" />
+                            
+									<table class="document" id="document">
+										<tbody>
+											<tr class="docuhead">
+												<th width="25%">打印设置</th>
+												<th width="25%">打印份数</th>
+												<th width="25%">选择商家</th>
+												<th width="25%">备注</th>
+											</tr>
+											<tr class="odd" style="display:table-row;">
+												<td>
+													<select id="print_type" name="print_type">
+														<option value="-1">黑白单页</option>
+														<?php
+														$mysql = new SaeMysql();
+														$sql = "SELECT * FROM `db_print_type`";
+														$data = $mysql->getData( $sql );
+														$i=0;
+														for($i=0;$i<count($data);$i++)
+														{
+															echo ("<option value=\"{$data[$i]['id']}\">{$data[$i]['name']}</option>");
+														}
+														?>
+													</select>
+												</td>
+												<td><button type="button" class="sub">-</button>&nbsp;<span class="num">1</span>&nbsp;<button type="button" class="add">+</button></td>
+												<td>
+													<select id="shop_id" name="shop_id">
+														<option value="-1">请选择商家</option>
+														<?php
+														$sql = "SELECT * FROM `db_shop`";
+														$data = $mysql->getData( $sql );
+														$i=0;
+														for($i=0;$i<count($data);$i++)
+														{
+															echo ("<option value=\"{$data[$i]['id']}\">{$data[$i]['name']}</option>");
+														}
+														?>
+													</select>
+												</td>
+												<td><input type="text" placeholder="如：10分钟后领取" maxlength="30" /></td>
+											</tr>
+										</tbody>
+									</table>
+											
+									<input type="submit" name="submit" id="goprint" value="上传打印" />
                                 </form>
                             </div>
-                            
-                            <table class="document" id="document">
-                                <tbody>
-                                    <tr class="docuhead">
-                                        <th width="33%">文档名称</th>
-                                        <th width="10%">文档页数</th>
-                                        <th width="22%">打印设置</th>
-                                        <th width="15%">打印份数</th>
-                                        <th width="10%">总价</th>
-                                        <th width="10%">删除</th>
-                                    </tr>
-                                    <tr class="odd" style="display:table-row;">
-                                        <td><div style="overflow:hidden; width:269px;" title="20112807.doc">20112807.doc</div></td>
-                                        <td class="pages">9</td>
-                                        <td><select class="bc"><option value="black">A4黑白</option><option value="color">A4彩色</option></select>&nbsp;&nbsp;&nbsp;<select class="sd"><option value="2">双页</option><option value="1">单页</option></select></td>
-                                        <td><button type="button" class="sub">-</button>&nbsp;<span class="num">1</span>&nbsp;<button type="button" class="add">+</button></td>
-                                        <td><span class="price">@_@</span>元</td>
-                                        <td><a class="close" href="javascript:;"><img src="images/close.gif" /></a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            
-                            <a href="#" class="goprint">确定打印</a>
                         </div>
                         
                 </div>
             </div>
     	</div>
-        
+		
         <!-- footer --> 
         <div class="footer">
             <div class="foot">

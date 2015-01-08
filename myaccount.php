@@ -36,9 +36,9 @@ session_start();
 				}else
 				{
 					?>
-                        <dd>欢迎您，<?=$_SESSION["uname"]?>
+                        <dd>欢迎您，<a href="myaccount.php"><?=$_SESSION["uname"]?></a>
                         <dt></dt>
-                        <dd><a href="#">我的打印</a></dd>
+                        <dd><a href="newprint.php">去打印</a></dd>
 						<dt></dt>
 						<a href="logout.php">登出</a></dd>
 					<?php
@@ -61,8 +61,8 @@ session_start();
                             </li>
                         	<li class="order"><h3>我的帐号</h3>
                             	<ul>
-                                	<li><a id="active" href="mypsw.php">修改密码</a></li>
-                                	<li><a href="javascript:;">管理收件地址</a></li>
+                                	<li><a id="active" href="javascript:;">帐号信息</a></li>
+                                	<li><a href="mypsw.php">修改密码</a></li>
                                 </ul>	
                             </li>
                         </ul>
@@ -70,23 +70,16 @@ session_start();
                         <div class="docuLeft">
                         	<div class="docuTop">
 								<div class="reg">
-									<form action="" method="post">
+									<div class="psw">
 										<dl class="clearfix">
-											<dd>当前密码：</dd>
-											<dt><input type="password" name="opsw" id="psw"></dt>
+											<dd>用户名：</dd>
+											<dt>howard</dt>
 										</dl>
 										<dl class="clearfix">
-											<dd>新密码：</dd>
-											<dt><input type="password" name="npsw" id="psw"></dt>
+											<dd>手机号：</dd>
+											<dt>1525****1850</dt>
 										</dl>
-										<dl class="clearfix">
-											<dd>重复密码：</dd>
-											<dt><input type="password" name="apsw" id="psw"></dt>
-										</dl>
-										<dl class="clearfix">
-											<dt><input type="submit" name="psubmit" id="psubmit"></dt>
-										</dl>
-									</form>
+									</div>
 								</div>
                             </div>
                         </div>

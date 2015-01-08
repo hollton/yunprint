@@ -35,9 +35,9 @@ session_start();
 				}else
 				{
 					?>
-                        <dd>欢迎您，<?=$_SESSION["uname"]?>
+                        <dd>欢迎您，<a href="myaccount.php"><?=$_SESSION["uname"]?></a>
                         <dt></dt>
-                        <dd><a href="#">我的打印</a></dd>
+                        <dd><a href="newprint.php">去打印</a></dd>
 						<dt></dt>
 						<a href="logout.php">登出</a></dd>
 					<?php
@@ -60,8 +60,8 @@ session_start();
                             </li>
                         	<li class="order"><h3>我的帐号</h3>
                             	<ul>
+                                	<li><a href="myaccount.php">帐号信息</a></li>
                                 	<li><a href="mypsw.php">修改密码</a></li>
-                                	<li><a href="myaddress.php">管理收件地址</a></li>
                                 </ul>	
                             </li>
                         </ul>
@@ -73,45 +73,30 @@ session_start();
                             <table class="document" id="document">
                                 <tbody>
                                     <tr class="docuhead">
-                                        <th width="20%">文档名称</th>
-                                        <th width="10%">订单号</th>
-                                        <th width="5%">页数</th>
-                                        <th width="10%">单双页</th>
-                                        <th width="10%">色彩</th>
-                                        <th width="10%">打印份数</th>
-                                        <th width="10%">总价</th>
-                                        <th width="20%">送货地址</th>
-                                        <th width="5%">删除</th>
+                                        <th width="30%">文档名称</th>
+                                        <th width="25%">打印方式</th>
+                                        <th width="10%">打印页数</th>
+                                        <th width="25%">打印商家</th>
+                                        <th width="10%">打印总价</th>
                                     </tr>
                                     
                                     <tr class="odd">
-                                        <td>打印</td>
-                                        <td>001</td>
-                                        <td class="pages">8</td>
-                                        <td><select class="sd"><option value="2">双页</option><option value="1">单页</option></select></td>
-                                        <td><select class="bc"><option value="black">A4黑白</option><option value="color">A4彩色</option></select></td>
-                                        <td><button type="button" class="sub">-</button>&nbsp;<span class="num">0</span>&nbsp;<button type="button" class="add">+</button></td>
-                                        <td><span class="price">0</span>元</td>
-                                        <td><input class="address" readonly="readonly" value="合工大8号楼" /><a class="change" href="javascript:;">修改</a></td>
-                                        <td><a class="close" href="javascript:;"><img src="images/close.gif" /></a></td>
+                                        <td>打印1</td>
+                                        <td>黑白单页</td>
+                                        <td>20</td>
+                                        <td>慈园门口</td>
+                                        <td><span class="price">1.2</span>元</td>
                                     </tr>
                                     
                                     <tr class="even">
-                                        <td>打印</td>
-                                        <td>001</td>
-                                        <td class="pages">8</td>
-                                        <td><select class="sd"><option value="2">双页</option><option value="1">单页</option></select></td>
-                                        <td><select class="bc"><option value="black">A4黑白</option><option value="color">A4彩色</option></select></td>
-                                        <td><button type="button" class="sub">-</button>&nbsp;<span class="num">0</span>&nbsp;<button type="button" class="add">+</button></td>
-                                        <td><span class="price">0</span>元</td>
-                                        <td><input class="address" readonly="readonly" value="合工大8号楼" /><a class="change" href="javascript:;">修改</a></td>
-                                        <td><a class="close" href="javascript:;"><img src="images/close.gif" /></a></td>
+                                        <td>打印2</td>
+                                        <td>黑白单页</td>
+                                        <td>20</td>
+                                        <td>慈园门口</td>
+                                        <td><span class="price">1.2</span>元</td>
                                     </tr>
                                 </tbody>
                             </table>
-                        	<div class="docuTop docuTop1">
-                            	<a href="javascript:;">确认下单</a>
-                            </div>
                         </div>
                         
                 </div>

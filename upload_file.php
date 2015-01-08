@@ -1,10 +1,11 @@
 <?php
 session_start();
-
 //上面这个，一定要放在最开始！！不要动！！！！
 ?>
 <html>
-<head> <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> </head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 <body>
 <?php
 include("checkpostget.php");
@@ -40,8 +41,8 @@ function filekzm($a)
  }
 }
 $kzm=filekzm($_FILES["file"]["name"]);
-echo $_FILES["file"]["name"];
-echo"fuck!!!";
+//echo $_FILES["file"]["name"];
+//echo"fuck!!!";
 if ((($kzm== ".doc")
 ||($kzm== ".docx")
 ||($kzm== ".ppt")
@@ -70,15 +71,15 @@ if ((($kzm== ".doc")
 	{
 		$save_file_name=generate_rand(16).$save_file_type;
 	}
-    echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-    echo "Type: " . $_FILES["file"]["type"] . "<br />";
-    echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-    echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+    //echo "Upload: " . $_FILES["file"]["name"] . "<br />";
+    //echo "Type: " . $_FILES["file"]["type"] . "<br />";
+    //echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+    //echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
 	//move_uploaded_file($_FILES["file"]["tmp_name"],
 	//$save_file_dir.$save_file_name);
 	
-	echo $saeSto->upload('yunprinter',$save_file_name,$_FILES["file"]["tmp_name"]). "<br />";
-	echo "Stored in: " .$save_file_name. "<br />";
+	//echo $saeSto->upload('yunprinter',$save_file_name,$_FILES["file"]["tmp_name"]). "<br />";
+	//echo "Stored in: " .$save_file_name. "<br />";
 	//echo $saeSto->getUrl('yunprinter',$save_file_name). "<br />";
 	$mysql=new SaeMysql();
 	$print_type=0;
@@ -117,9 +118,8 @@ if ((($kzm== ".doc")
 		die("Error:" . $mysql->errmsg());
 	}
 	?>
-	�ϴ��ɹ���
-	��ת֧����
-	pay.php?fid=<?=$data[0]['id']?>
+	<h4>上传成功！将带您进入支付页面...</h4>
+	<meta http-equiv="refresh" content="3,url=pay.php?fid=<?=$data[0]['id']?>">
 	<?php
 	$mysql->closeDb();
   }
